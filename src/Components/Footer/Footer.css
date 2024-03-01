@@ -1,0 +1,24 @@
+.contact{
+    font-style: italic;  
+}
+#footer{
+    background-color: whitesmoke;
+}
+.icons .icon{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color:rgba(33, 37, 41, 0.75);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+.but{
+    background-color: #0aad0a !important;
+    color: white !important;
+}
+.link:hover{
+    color: #0aad0a;
+}
