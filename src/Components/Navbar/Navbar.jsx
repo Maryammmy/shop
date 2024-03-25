@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import  { storecontext } from '../../Context/Context'
 
 export default function Navbar() {
-  let {counter ,setcounter ,getcart }=useContext(storecontext)
+  let {counter,setcounter,getcart,getwishlist,wishcounter,setwishcounter }=useContext(storecontext)
  
   useEffect(()=>{
 async function getcardata(){
@@ -15,7 +15,14 @@ setcounter(data.numOfCartItems)
 getcardata()
   },[])
   
-  console.log(counter)
+  useEffect(()=>{
+    async function getwishdata(){
+    let data =await getwishlist()
+    console.log(data)
+    setwishcounter(data.count)
+    }
+    getwishdata()
+      },[])
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-light position-fixed w-100 z-3 ">
@@ -56,27 +63,19 @@ getcardata()
        <li className="nav-item">
          <NavLink className="nav-link position-relative" to="wishlist">Wishlist
          <i className="fa-solid fa-heart fs-4  px-2"></i>
-  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    4+
-  </span>
+ {wishcounter ? <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+  {wishcounter}
   <span className="visually-hidden">unread messages</span>
+  </span> : ''}
   </NavLink>
        </li>
        <li className="nav-item ">
           <NavLink className="nav-link" to="signin">Sign out</NavLink>
         </li>
-
-       
-     
-     
-     
-      
      </ul>
-   
     </div>
   </div>
 </nav>
-
     </>
   )
 }

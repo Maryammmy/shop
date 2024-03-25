@@ -8,11 +8,11 @@ import { Helmet } from 'react-helmet';
 export default function Productdetails() {
   let {counter,setcounter}= useContext(storecontext)
   let param =  useParams()
+  console.log(param)
   const[product,setproduct] = useState({})
   const [loading,setloading] =useState(true)
  
  async function getproductdetails(){
- 
  let {data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/products/${param.id}`)
  console.log(data.data)
  setproduct(data.data)

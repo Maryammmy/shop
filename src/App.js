@@ -1,7 +1,11 @@
 import Navbar from "./Components/Navbar/Navbar";
 import Mainslider from "./Components/Mainslider/Mainslider";
 import Categories from "./Components/Categories/Categories";
-import { RouterProvider,createHashRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createHashRouter,
+} from "react-router-dom";
 import Mainlayout from "./Layout/Mainlayout/Mainlayout";
 import Home from "./Components/Home/Home";
 import Products from "./Components/Products/Products";
@@ -51,13 +55,13 @@ export default function App() {
     };
   }, []);
 
-  let routes = createHashRouter([
+  let routes = createBrowserRouter([
     {
-      path: "",
+      path: "/",
       element: <Mainlayout />,
       children: [
         {
-          path: "",
+          path: "/",
           element: (
             <ProtectedRoutes>
               <Home />
@@ -146,7 +150,7 @@ export default function App() {
       <Storecontextprovider>
         <RouterProvider router={routes} />
       </Storecontextprovider>
-      <ToastContainer theme="colored"  autoClose={700} draggable={true} />
+      <ToastContainer theme="colored" autoClose={700} draggable={true} />
       <div>
         {onlineElementVisible && (
           <Online>
